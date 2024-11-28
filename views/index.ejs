@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de Alumnos</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Correo</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+            <th>Fecha de Ingreso</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% alumnos.forEach(alumno => { %>
+        <tr>
+            <td><%= alumno.id %></td>
+            <td><%= alumno.nombre %></td>
+            <td><%= alumno.apellido %></td>
+            <td><%= alumno.edad %></td>
+            <td><%= alumno.correo %></td>
+            <td><%= alumno.direccion %></td>
+            <td><%= alumno.telefono %></td>
+            <td><%= alumno.fecha_ingreso %></td>
+            <td>
+                <a href="/edit/<%= alumno.id %>">Editar</a>
+                <a href="/delete/<%= alumno.id %>" onclick="return confirm('¿Estás seguro de que deseas eliminar este alumno?')">Eliminar</a>
+            </td>
+        </tr>
+
+  <%  }); %>
+</tbody>
+</table>
+
+<h2>Agregar nuevo alumno</h2>
+<form action="/add" method="POST">
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required>
+
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" name="edad" required>
+
+    <label for="correo">Correo electrónico:</label>
+    <input type="email" id="correo" name="correo" required>
+
+    <label for="direccion">Dirección:</label>
+    <input type="text" id="direccion" name="direccion" required>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="text" id="telefono" name="telefono" required>
+
+    <label for="fecha_ingreso">Fecha de ingreso:</label>
+    <input type="text" id="fecha_ingreso" name="fecha_ingreso" required>
+
+    <button type="submit">Agregar Alumno</button>
+</form>
+
+</body>
+</html>
+
